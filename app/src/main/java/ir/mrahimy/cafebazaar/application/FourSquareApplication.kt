@@ -16,8 +16,10 @@ class FourSquareApplication : Application() {
         startKoin {
             androidContext(this@FourSquareApplication)
             androidLogger(Level.DEBUG)
-            modules(adapterModule,
-                 modelModule, viewModelModule)
+            modules(
+                adapterModule,
+                modelModule, viewModelModule
+            )
         }
     }
 }
