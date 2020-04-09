@@ -1,4 +1,4 @@
-package ir.mrahimy.cafebazaar.db.dao
+package ir.mrahimy.cafebazaar.base
 
 import androidx.room.*
 
