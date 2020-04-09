@@ -3,7 +3,7 @@ package ir.mrahimy.cafebazaar.data.dataclass
 
 import com.google.gson.annotations.SerializedName
 
-data class PrefixedIcon(
+data class NamedIconAddress(
     @SerializedName("name")
     val name: String,
     @SerializedName("prefix")
