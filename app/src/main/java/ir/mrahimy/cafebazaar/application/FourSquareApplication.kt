@@ -3,6 +3,7 @@ package ir.mrahimy.cafebazaar.application
 import android.app.Application
 import ir.mrahimy.cafebazaar.di.adapterModule
 import ir.mrahimy.cafebazaar.di.modelModule
+import ir.mrahimy.cafebazaar.di.serializationModule
 import ir.mrahimy.cafebazaar.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -18,7 +19,8 @@ class FourSquareApplication : Application() {
             androidLogger(Level.DEBUG)
             modules(
                 adapterModule,
-                modelModule, viewModelModule
+                modelModule, viewModelModule,
+                serializationModule
             )
         }
     }
