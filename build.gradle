@@ -2,6 +2,7 @@
 
 buildscript {
     ext {
+        coroutineVersion = '1.3.3'
         gradlePluginVersion = '3.6.2'
         kotlin_version = '1.3.61'
         okHttpVersion = '3.12.0'
