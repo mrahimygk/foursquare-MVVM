@@ -2,6 +2,8 @@ package ir.mrahimy.cafebazaar.application
 
 import android.app.Application
 import ir.mrahimy.cafebazaar.di.adapterModule
+import ir.mrahimy.cafebazaar.di.modelModule
+import ir.mrahimy.cafebazaar.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -14,7 +16,8 @@ class FourSquareApplication : Application() {
         startKoin {
             androidContext(this@FourSquareApplication)
             androidLogger(Level.DEBUG)
-            modules(adapterModule)
+            modules(adapterModule,
+                 modelModule, viewModelModule)
         }
     }
 }
