@@ -4,6 +4,9 @@ package ir.mrahimy.cafebazaar.network.reponse
 import com.google.gson.annotations.SerializedName
 import ir.mrahimy.cafebazaar.data.dataclass.SuggestedBounds
 
+/**
+ * represents info for `val response: Any?` in [FourSquareExploreVenuesRes] for now.
+ */
 data class VenueQueryResponse(
     @SerializedName("groups")
     val groups: List<Group>,
