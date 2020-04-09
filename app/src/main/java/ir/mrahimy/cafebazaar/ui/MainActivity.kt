@@ -1,7 +1,8 @@
-package ir.mrahimy.cafebazaar
+package ir.mrahimy.cafebazaar.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ir.mrahimy.cafebazaar.R
 
 class MainActivity : AppCompatActivity() {
 
