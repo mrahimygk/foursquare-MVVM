@@ -7,5 +7,5 @@ data class Photos(
     @SerializedName("count")
     val count: Int,
     @SerializedName("groups")
-    val groups: List<Any>
+    val groups: List<Nothing>
 )
