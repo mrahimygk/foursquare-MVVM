@@ -5,6 +5,7 @@ buildscript {
         coroutineVersion = '1.3.3'
         fragmentKtxVersion = '1.2.4'
         gradlePluginVersion = '3.6.2'
+        koinVersion = '2.0.0-GA'
         kotlin_version = '1.3.61'
         lifecycleVersion = '2.2.0'
         okHttpVersion = '3.12.0'
