@@ -1,4 +1,4 @@
-package ir.mrahimy.cafebazaar.ui
+package ir.mrahimy.cafebazaar.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
