@@ -3,7 +3,7 @@ package ir.mrahimy.cafebazaar.db.dao
 import androidx.room.*
 
 /**
- * A base interface to be used in entity dao CRUD
+ * A base interface to be used in entity data manipulation
  */
 @Dao
 interface BaseDao<T> {
