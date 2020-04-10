@@ -14,7 +14,7 @@ data class Venue(
     val categories: List<VenueCategory>,
     @Embedded(prefix = "delivery_")
     @SerializedName("delivery")
-    val delivery: Delivery,
+    val delivery: Delivery?,
     @PrimaryKey
     @SerializedName("id")
     val id: String,
@@ -25,8 +25,8 @@ data class Venue(
     val name: String,
     @Embedded(prefix = "photo_")
     @SerializedName("photos")
-    val photos: Photos,
+    val photos: Photos?,
     @Embedded(prefix = "page_")
     @SerializedName("venuePage")
-    val venuePage: VenuePage
+    val venuePage: VenuePage?
 )
