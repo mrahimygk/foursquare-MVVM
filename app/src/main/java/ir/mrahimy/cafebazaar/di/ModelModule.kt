@@ -4,5 +4,5 @@ import ir.mrahimy.cafebazaar.ui.main.MainModel
 import org.koin.dsl.module
 
 val modelModule = module {
-    factory { MainModel() }
+    factory { MainModel(get()) }
 }
