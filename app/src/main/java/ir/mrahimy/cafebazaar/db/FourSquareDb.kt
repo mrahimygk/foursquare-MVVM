@@ -2,11 +2,23 @@ package ir.mrahimy.cafebazaar.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import ir.mrahimy.cafebazaar.data.dataclass.Venue
+import ir.mrahimy.cafebazaar.db.typeconverter.*
 
 @Database(
-    entities = [],
+    entities = [
+        Venue::class
+    ],
     version = 1,
     exportSchema = false
 )
-abstract  class FourSquareDb : RoomDatabase() {
+@TypeConverters(
+    VenueCategoryListConverter::class,
+    LabeledLatLngListConverter::class,
+    NothingListConverter::class,
+    IntListConverter::class,
+    StringListConverter::class
+)
+abstract class FourSquareDb : RoomDatabase() {
 }
