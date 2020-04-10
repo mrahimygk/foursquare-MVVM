@@ -42,4 +42,7 @@ class MainModel(
     suspend fun addMockVenue() {
         venueRepository.insert(makeMockVenue(Random.nextInt(10000)))
     }
+
+    suspend fun sync() = venueRepository.sync()
+
 }
