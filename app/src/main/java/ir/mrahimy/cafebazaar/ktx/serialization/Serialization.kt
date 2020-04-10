@@ -1,4 +1,4 @@
-package ir.mrahimy.cafebazaar.db.typeconverter
+package ir.mrahimy.cafebazaar.ktx.serialization
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
