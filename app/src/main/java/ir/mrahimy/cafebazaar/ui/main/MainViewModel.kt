@@ -12,9 +12,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
 
-    private val _venueList = MutableLiveData<List<Venue>>()
-    val venueList: LiveData<List<Venue>>
-        get() = _venueList
+    val venueList = model.offlineVenueList
 
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean>
@@ -31,10 +29,7 @@ class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
         var i = 0
         repeat(15) {
             delay(100)
-            _venueList.postValue(mutableListOf<Venue>().apply {
-                addAll(venueList.value ?: listOf())
-                add(model.makeMockVenue(i++))
-            })
+            model.addMockVenue()
         }
         _isLoading.postValue(false)
     }
