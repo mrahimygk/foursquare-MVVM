@@ -21,7 +21,8 @@ class FourSquareApplication : Application() {
                 adapterModule,
                 modelModule, viewModelModule,
                 serializationModule,
-                databaseModule
+                databaseModule,
+                networkModule
             )
         }
     }
