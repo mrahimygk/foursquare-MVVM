@@ -1,6 +1,7 @@
 package ir.mrahimy.cafebazaar.di
 
 import ir.mrahimy.cafebazaar.network.BaseUrl
+import ir.mrahimy.cafebazaar.network.interceptor.FoursquareApiInterceptor
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,6 +15,7 @@ import timber.log.Timber
 import java.io.File
 
 object LoggingInterceptorQualifier : Qualifier
+object FoursquareApiInterceptorQualifier : Qualifier
 object OkHttpQualifier : Qualifier
 object OkHttpCacheQualifier : Qualifier
 object RetrofitQualifier : Qualifier
@@ -35,8 +37,13 @@ val networkModule = module {
         }
     }
 
+    factory(FoursquareApiInterceptorQualifier){
+        FoursquareApiInterceptor(/***/)
+    }
+
     single<OkHttpClient>(OkHttpQualifier) {
         OkHttpClient.Builder().apply {
+            addInterceptor(get(FoursquareApiInterceptorQualifier))
             addInterceptor(get(LoggingInterceptorQualifier))
             cache(get())
         }.build()
