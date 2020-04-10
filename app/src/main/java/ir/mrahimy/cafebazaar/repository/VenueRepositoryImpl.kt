@@ -11,7 +11,7 @@ class VenueRepositoryImpl(
     private val api: VenuesApi,
     private val dao: VenueDao
 ) : VenueRepository {
-    override suspend fun get(): List<Venue> {
+    override suspend fun getAll(): List<Venue> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -30,4 +30,8 @@ class VenueRepositoryImpl(
             }
             return@safeApiCall ApiResult.Success(Any())
         }
+
+    override suspend fun get(venueId: String): Venue {
+        return dao.getSuspend(venueId)
+    }
 }
