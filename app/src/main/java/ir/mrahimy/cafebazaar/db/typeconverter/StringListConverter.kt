@@ -8,12 +8,9 @@ import java.io.Serializable
 class StringListConverter : Serializable {
 
     @TypeConverter
-    fun fromList(list: List<String>?): String {
-        return toJson(list)
-    }
+    fun fromList(list: List<String>?) = toJson(list)
 
     @TypeConverter
-    fun fromDb(json: String): List<String> {
-        return fromJson(json)
-    }
+    fun fromDb(json: String): List<String> = fromJson(json)
+
 }
