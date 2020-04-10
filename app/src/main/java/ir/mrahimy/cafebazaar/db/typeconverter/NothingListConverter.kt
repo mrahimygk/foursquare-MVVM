@@ -11,7 +11,7 @@ class NothingListConverter : Serializable {
     }
 
     @TypeConverter
-    fun fromDb(json: String): List<Nothing> {
+    fun fromDb(json: String?): List<Nothing> {
         return emptyList()
     }
 }
