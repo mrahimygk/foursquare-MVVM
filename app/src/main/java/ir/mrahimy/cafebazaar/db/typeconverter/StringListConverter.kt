@@ -11,6 +11,6 @@ class StringListConverter : Serializable {
     fun fromList(list: List<String>?) = toJson(list)
 
     @TypeConverter
-    fun fromDb(json: String): List<String> = fromJson(json)
+    fun fromDb(json: String?): List<String> = fromJson(json)
 
 }
