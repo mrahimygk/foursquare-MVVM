@@ -6,9 +6,9 @@ import ir.mrahimy.cafebazaar.data.dataclass.Venue
 
 data class VenueItem(
     @SerializedName("reasons")
-    val reasons: Reasons,
+    val reasons: Reasons?,
     @SerializedName("referralId")
-    val referralId: String,
+    val referralId: String?,
     @SerializedName("venue")
-    val venue: Venue
+    val venue: Venue?
 )

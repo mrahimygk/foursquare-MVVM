@@ -9,21 +9,21 @@ import ir.mrahimy.cafebazaar.data.dataclass.SuggestedBounds
  */
 data class VenueQueryResponse(
     @SerializedName("groups")
-    val groups: List<Group>,
+    val groups: List<Group>?,
     @SerializedName("headerFullLocation")
-    val headerFullLocation: String,
+    val headerFullLocation: String?,
     @SerializedName("headerLocation")
-    val headerLocation: String,
+    val headerLocation: String?,
     @SerializedName("headerLocationGranularity")
-    val headerLocationGranularity: String,
+    val headerLocationGranularity: String?,
     @SerializedName("query")
-    val query: String,
+    val query: String?,
     @SerializedName("suggestedBounds")
-    val suggestedBounds: SuggestedBounds,
+    val suggestedBounds: SuggestedBounds?,
     @SerializedName("suggestedFilters")
-    val suggestedFilters: SuggestedFilters,
+    val suggestedFilters: SuggestedFilters?,
     @SerializedName("suggestedRadius")
-    val suggestedRadius: Int,
+    val suggestedRadius: Int?,
     @SerializedName("totalResults")
-    val totalResults: Int
+    val totalResults: Int?
 )

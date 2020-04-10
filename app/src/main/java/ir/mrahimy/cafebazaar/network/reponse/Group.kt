@@ -8,9 +8,9 @@ import com.google.gson.annotations.SerializedName
  */
 data class Group(
     @SerializedName("items")
-    val items: List<VenueItem>,
+    val items: List<VenueItem>?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("type")
-    val type: String
+    val type: String?
 )

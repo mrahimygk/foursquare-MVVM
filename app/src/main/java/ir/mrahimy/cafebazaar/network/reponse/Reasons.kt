@@ -6,7 +6,7 @@ import ir.mrahimy.cafebazaar.data.dataclass.ReasonItem
 
 data class Reasons(
     @SerializedName("count")
-    val count: Int,
+    val count: Int?,
     @SerializedName("items")
-    val items: List<ReasonItem>
+    val items: List<ReasonItem?>?
 )

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Photos(
     @SerializedName("count")
-    val count: Int,
+    val count: Int?,
     @SerializedName("groups")
-    val groups: List<Nothing>
+    val groups: List<Nothing?>?
 )

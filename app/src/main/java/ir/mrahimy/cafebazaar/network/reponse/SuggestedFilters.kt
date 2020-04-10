@@ -6,7 +6,7 @@ import ir.mrahimy.cafebazaar.data.dataclass.Filter
 
 data class SuggestedFilters(
     @SerializedName("filters")
-    val filters: List<Filter>,
+    val filters: List<Filter?>?,
     @SerializedName("header")
-    val header: String
+    val header: String?
 )
