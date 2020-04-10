@@ -24,16 +24,6 @@ class FoursquareApiInterceptor(val version: String = "20200101") : Interceptor {
             .build()
         request = request.newBuilder().url(url).build()
         return chain.proceed(request)
-//        var request = chain.request().newBuilder()
-//            .addHeader(
-//                "client_id",
-//                "0RC3M3SBMKAQWRKQEUKRXT0C4UE5L2N0JD3V4C45DYS0APUT"
-//            )
-//            .addHeader(
-//                "client_secret",
-//                "NR5VX04CU0O1KGAEUG4I3DKJXS5V0YCUZACZ2MS1ULM4CO3E"
-//            ).build()
-//        return chain.proceed(request)
     }
 
 }
