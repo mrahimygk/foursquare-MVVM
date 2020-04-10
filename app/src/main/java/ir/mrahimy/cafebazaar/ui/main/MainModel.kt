@@ -15,13 +15,15 @@ class MainModel(
 
     val offlineVenueList = venueRepository.getOffline()
 
-    suspend fun syncVenueList(offset: Int/*TODO: GET raw LOCATION DATA FROM vm <-- activity*/) =
-        venueRepository.sync(
-            mapOf(
-                "ll" to "40.7243,-74.0018",
-                "limit" to "2",
-                "offset" to offset.toString()
-            )
+    suspend fun syncVenueList(
+        limit: Int,
+        offset: Int/*TODO: GET raw LOCATION DATA FROM vm <-- activity*/
+    ) = venueRepository.sync(
+        mapOf(
+            "ll" to "40.7243,-74.0018",
+            "limit" to limit.toString(),
+            "offset" to offset.toString()
         )
+    )
 
 }
