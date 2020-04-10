@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class NamedIconAddress(
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("prefix")
-    val prefix: String,
+    val prefix: String?,
     @SerializedName("sizes")
-    val sizes: List<Int>
+    val sizes: List<Int?>?
 )

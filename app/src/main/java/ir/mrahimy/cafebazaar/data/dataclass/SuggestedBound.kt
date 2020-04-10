@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SuggestedBound(
     @SerializedName("lat")
-    val lat: Double,
+    val lat: Double?,
     @SerializedName("lng")
-    val lng: Double
+    val lng: Double?
 )

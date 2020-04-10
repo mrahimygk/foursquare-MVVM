@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 data class DeliveryProvider(
     @Embedded(prefix = "icon")
     @SerializedName("icon")
-    val icon: NamedIconAddress,
+    val icon: NamedIconAddress?,
     @SerializedName("name")
-    val name: String
+    val name: String?
 )

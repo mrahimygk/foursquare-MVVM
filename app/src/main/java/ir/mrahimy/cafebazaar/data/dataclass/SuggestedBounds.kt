@@ -6,7 +6,7 @@ import ir.mrahimy.cafebazaar.data.dataclass.SuggestedBound
 
 data class SuggestedBounds(
     @SerializedName("ne")
-    val ne: SuggestedBound,
+    val ne: SuggestedBound?,
     @SerializedName("sw")
-    val sw: SuggestedBound
+    val sw: SuggestedBound?
 )

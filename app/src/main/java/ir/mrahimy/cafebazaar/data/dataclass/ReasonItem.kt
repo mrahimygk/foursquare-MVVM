@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class ReasonItem(
     @SerializedName("reasonName")
-    val reasonName: String,
+    val reasonName: String?,
     @SerializedName("summary")
-    val summary: String,
+    val summary: String?,
     @SerializedName("type")
-    val type: String
+    val type: String?
 )

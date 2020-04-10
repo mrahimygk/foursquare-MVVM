@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName
 
 data class VenueCategory(
     @SerializedName("icon")
-    val icon: SuffixedIconAddress,
+    val icon: SuffixedIconAddress?,
     @SerializedName("id")
-    val id: String,
+    val id: String?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("pluralName")
-    val pluralName: String,
+    val pluralName: String?,
     @SerializedName("primary")
-    val primary: Boolean,
+    val primary: Boolean?,
     @SerializedName("shortName")
-    val shortName: String
+    val shortName: String?
 )

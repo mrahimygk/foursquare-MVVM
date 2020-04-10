@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class LabeledLatLng(
     @SerializedName("label")
-    val label: String,
+    val label: String?,
     @SerializedName("lat")
-    val lat: Double,
+    val lat: Double?,
     @SerializedName("lng")
-    val lng: Double
+    val lng: Double?
 )

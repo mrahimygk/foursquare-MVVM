@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Filter(
     @SerializedName("key")
-    val key: String,
+    val key: String?,
     @SerializedName("name")
-    val name: String
+    val name: String?
 )

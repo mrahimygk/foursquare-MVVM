@@ -11,7 +11,7 @@ import ir.mrahimy.cafebazaar.network.reponse.VenuePage
 @Entity
 data class Venue(
     @SerializedName("categories")
-    val categories: List<VenueCategory>,
+    val categories: List<VenueCategory>?,
     @Embedded(prefix = "delivery_")
     @SerializedName("delivery")
     val delivery: Delivery?,
@@ -20,9 +20,9 @@ data class Venue(
     val id: String,
     @Embedded(prefix = "location_")
     @SerializedName("location")
-    val location: Location,
+    val location: Location?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @Embedded(prefix = "photo_")
     @SerializedName("photos")
     val photos: Photos?,
