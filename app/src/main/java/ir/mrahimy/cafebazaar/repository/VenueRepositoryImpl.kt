@@ -1,8 +1,11 @@
 package ir.mrahimy.cafebazaar.repository
 
+import androidx.lifecycle.LiveData
 import ir.mrahimy.cafebazaar.data.dataclass.Venue
 import ir.mrahimy.cafebazaar.db.dao.VenueDao
+import ir.mrahimy.cafebazaar.network.ApiResult
 import ir.mrahimy.cafebazaar.network.api.VenuesApi
+import ir.mrahimy.cafebazaar.network.safeApiCall
 
 class VenueRepositoryImpl(
     private val api: VenuesApi,
@@ -12,11 +15,17 @@ class VenueRepositoryImpl(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getOffline(): List<Venue> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getOffline(): LiveData<List<Venue>> = dao.get()
 
-    override suspend fun sync() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override suspend fun sync(queryMap: Map<String, String>) =
+        safeApiCall {
+            val result = api.query(queryMap)
+            val singleVenue = result.groups[0].items[0].venue
+            insert(singleVenue)
+            return@safeApiCall ApiResult.Success(Any())
+        }
+
+    override suspend fun insert(venue: Venue) {
+        dao.insert(venue)
     }
 }
