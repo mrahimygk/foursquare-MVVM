@@ -16,9 +16,8 @@ class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    fun sync(offset:Int) = viewModelScope.launch {
+    fun syncVenueList(offset: Int) = viewModelScope.launch {
         _isLoading.postValue(true)
-        delay(100)
         when (val result = model.syncVenueList(offset)) {
             is ApiResult.Success -> {
                 val data = result.data
