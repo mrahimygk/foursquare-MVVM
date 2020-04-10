@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ir.mrahimy.cafebazaar.base.BaseViewModel
 import ir.mrahimy.cafebazaar.data.dataclass.*
+import ir.mrahimy.cafebazaar.network.ApiResult
 import ir.mrahimy.cafebazaar.network.reponse.Photos
 import ir.mrahimy.cafebazaar.network.reponse.VenuePage
 import kotlinx.coroutines.delay
@@ -26,10 +27,20 @@ class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
 
     suspend fun initList() {
         _isLoading.postValue(true)
-        repeat(15) {
-            delay(100)
-            model.addMockVenue()
-        }
+//        repeat(15) {
+//            delay(100)
+//            model.addMockVenue()
+//        }
         _isLoading.postValue(false)
     }
+
+    fun sync() = viewModelScope.launch {
+        delay(100)
+        when (val result = model.sync()) {
+            is ApiResult.Error -> {
+                //TODO: call again?
+            }
+        }
+    }
+
 }
