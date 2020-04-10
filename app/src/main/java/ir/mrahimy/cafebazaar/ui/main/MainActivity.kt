@@ -3,6 +3,8 @@ package ir.mrahimy.cafebazaar.ui.main
 import ir.mrahimy.cafebazaar.R
 import ir.mrahimy.cafebazaar.base.BaseActivity
 import ir.mrahimy.cafebazaar.databinding.ActivityMainBinding
+import ir.mrahimy.cafebazaar.helper.EventObserver
+import ir.mrahimy.cafebazaar.ui.details.DetailsActivity
 import ir.mrahimy.cafebazaar.util.PagedRecyclerViewScrollListener
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -17,6 +19,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     private val perPageLimit = 10
     private val venuesAdapter: VenuesAdapter by inject()
     override fun bindObservables() {
+        vm.onStartDetailsActivity.observe(this, EventObserver {
+            DetailsActivity.startMe(this, it)
+        })
     }
 
     override fun configCreationEvents() {
@@ -28,6 +33,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                         vm.syncVenueList(perPageLimit, page * perPageLimit)
                     }
                 })
+            }
+            venuesAdapter.onClick = { item, _ ->
+                vm.selectVenue(item)
             }
         }
     }
