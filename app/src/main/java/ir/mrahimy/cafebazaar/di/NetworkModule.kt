@@ -1,12 +1,14 @@
 package ir.mrahimy.cafebazaar.di
 
 import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.Qualifier
 import org.koin.dsl.module
 import timber.log.Timber
 
 object LoggingInterceptorQualifier : Qualifier
+object OkHttpQualifier : Qualifier
 
 val networkModule = module {
 
@@ -17,6 +19,13 @@ val networkModule = module {
         }.apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
+    }
+
+    single<OkHttpClient>(OkHttpQualifier) {
+        OkHttpClient.Builder().apply {
+            addInterceptor(get(LoggingInterceptorQualifier))
+            cache(get())
+        }.build()
     }
 
 }
