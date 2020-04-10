@@ -9,11 +9,11 @@ import androidx.room.*
 interface BaseDao<T> {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(vararg args: T)
+    suspend fun insert(vararg args: T)
 
     @Delete
-    fun delete(arg: T): Int
+    suspend fun delete(arg: T): Int
 
     @Update
-    fun update(arg: T)
+    suspend fun update(arg: T)
 }
