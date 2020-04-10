@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ir.mrahimy.cafebazaar.base.BaseViewModel
+import ir.mrahimy.cafebazaar.data.dataclass.Venue
+import ir.mrahimy.cafebazaar.helper.Event
 import ir.mrahimy.cafebazaar.network.ApiResult
 import kotlinx.coroutines.launch
 
@@ -28,4 +30,11 @@ class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
         _isLoading.postValue(false)
     }
 
+    private val _onStartDetailsActivity = MutableLiveData<Event<String>>()
+    val onStartDetailsActivity: LiveData<Event<String>>
+        get() = _onStartDetailsActivity
+
+    fun selectVenue(item: Venue) {
+        _onStartDetailsActivity.postValue(Event(item.id))
+    }
 }
