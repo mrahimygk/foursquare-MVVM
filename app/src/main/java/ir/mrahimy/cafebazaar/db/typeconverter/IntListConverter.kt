@@ -5,7 +5,10 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
-
+/**
+ * Integers are converted to json as doubles?
+ * So I could not use ktx from [Serializable]
+ */
 class IntListConverter : Serializable {
 
     private var gson = Gson()
