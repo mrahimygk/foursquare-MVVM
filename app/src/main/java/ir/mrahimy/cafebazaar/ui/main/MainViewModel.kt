@@ -26,7 +26,6 @@ class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
 
     suspend fun initList() {
         _isLoading.postValue(true)
-        var i = 0
         repeat(15) {
             delay(100)
             model.addMockVenue()
