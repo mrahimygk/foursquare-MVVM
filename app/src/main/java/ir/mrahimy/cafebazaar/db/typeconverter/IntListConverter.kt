@@ -16,7 +16,7 @@ class IntListConverter : Serializable {
     }
 
     @TypeConverter
-    fun fromDb(json: String): List<Int> {
+    fun fromDb(json: String?): List<Int> {
         val type = object : TypeToken<List<Int?>?>() {}.type
         return gson.fromJson(json, type)
     }
