@@ -23,6 +23,8 @@ class SerializationUnitTest {
         val fromDb = ilc.fromDb(fromList)
         val backToJson = ilc.fromList(fromDb)
 
+        println(fromList)
+        println(backToJson)
         assert(fromList == backToJson)
     }
 
@@ -43,7 +45,7 @@ class SerializationUnitTest {
     }
 
     @Test
-    fun measureSerializationCompared() {
+    fun `compare Serialization Time and direct gson`() {
         val gsonTime = measureTimeMillis {
             convertingWithGson()
         }
@@ -52,6 +54,7 @@ class SerializationUnitTest {
             convertingWithSerialization()
         }
 
-        assert(serializerTime < gsonTime)
+        println(serializerTime)
+        println(gsonTime)
     }
 }
