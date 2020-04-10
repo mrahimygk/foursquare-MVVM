@@ -84,5 +84,8 @@ dependencies {
     //Logs
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
+    //UI
+    implementation "com.google.android.material:material:$materialVersion"
+
 
 }
