@@ -8,5 +8,4 @@ interface VenueRepository {
     suspend fun get(): List<Venue>
     fun getOffline(): LiveData<List<Venue>>
     suspend fun sync(queryMap: Map<String, String>): ApiResult<Any>
-    suspend fun insert(venue: Venue)
 }
