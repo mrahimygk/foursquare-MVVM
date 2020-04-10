@@ -86,6 +86,7 @@ dependencies {
 
     //UI
     implementation "com.google.android.material:material:$materialVersion"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
 
 }
