@@ -20,12 +20,14 @@ class VenueRepositoryImpl(
     override suspend fun sync(queryMap: Map<String, String>) =
         safeApiCall {
             val result = api.query(queryMap)
-            val venueList = result.groups.flatMap { group ->
-                group.items.map { item ->
+            val venueList = result.groups?.flatMap { group ->
+                group.items?.map { item ->
                     item.venue
-                }
+                } ?: listOf()
             }
-            venueList.forEach { venue -> dao.insert(venue) }
+            venueList?.forEach { venue ->
+                venue?.let { dao.insert(venue) }
+            }
             return@safeApiCall ApiResult.Success(Any())
         }
 }
