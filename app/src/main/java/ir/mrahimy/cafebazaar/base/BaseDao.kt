@@ -8,7 +8,7 @@ import androidx.room.*
 @Dao
 interface BaseDao<T> {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(vararg args: T)
 
     @Delete
