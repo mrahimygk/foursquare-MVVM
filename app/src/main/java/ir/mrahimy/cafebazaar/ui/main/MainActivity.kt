@@ -1,12 +1,10 @@
 package ir.mrahimy.cafebazaar.ui.main
 
-import androidx.lifecycle.lifecycleScope
 import ir.mrahimy.cafebazaar.R
 import ir.mrahimy.cafebazaar.base.BaseActivity
 import ir.mrahimy.cafebazaar.databinding.ActivityMainBinding
 import ir.mrahimy.cafebazaar.util.PagedRecyclerViewScrollListener
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,6 +14,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     override val vm: MainViewModel by viewModel()
 
+    private val perPageLimit = 10
     private val venuesAdapter: VenuesAdapter by inject()
     override fun bindObservables() {
     }
@@ -26,7 +25,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             layoutManager?.let {
                 addOnScrollListener(object : PagedRecyclerViewScrollListener(it) {
                     override fun onLoadMore(page: Int) {
-                        lifecycleScope.launch { vm.initList() }
+                        vm.syncVenueList(perPageLimit, page * perPageLimit)
                     }
                 })
             }
@@ -34,6 +33,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     }
 
     override fun configResumeEvents() {
+        vm.syncVenueList(perPageLimit, 0)
     }
 
     override fun initBinding() {
