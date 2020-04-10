@@ -81,4 +81,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
 
+    //Logs
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
+
 }
