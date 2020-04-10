@@ -5,12 +5,14 @@ import ir.mrahimy.cafebazaar.data.dataclass.*
 import ir.mrahimy.cafebazaar.network.reponse.Photos
 import ir.mrahimy.cafebazaar.network.reponse.VenuePage
 import ir.mrahimy.cafebazaar.repository.VenueRepository
+import kotlin.random.Random
 
 class MainModel(
     private val venueRepository: VenueRepository
 ) : BaseModel() {
     suspend fun get() = venueRepository.get()
-    fun makeMockVenue(i: Int): Venue =
+    val offlineVenueList = venueRepository.getOffline()
+    private fun makeMockVenue(i: Int): Venue =
         Venue(
             listOf(),
             Delivery(
@@ -36,4 +38,8 @@ class MainModel(
             ), "CAffeLate", Photos(1, listOf()),
             VenuePage("2$i")
         )
+
+    suspend fun addMockVenue() {
+        venueRepository.insert(makeMockVenue(Random.nextInt(10000)))
+    }
 }
