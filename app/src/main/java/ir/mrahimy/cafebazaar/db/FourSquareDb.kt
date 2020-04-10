@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ir.mrahimy.cafebazaar.data.dataclass.Venue
+import ir.mrahimy.cafebazaar.db.dao.VenueDao
 import ir.mrahimy.cafebazaar.db.typeconverter.*
 
 @Database(
@@ -21,4 +22,5 @@ import ir.mrahimy.cafebazaar.db.typeconverter.*
     StringListConverter::class
 )
 abstract class FourSquareDb : RoomDatabase() {
+    abstract fun venueDao(): VenueDao
 }
