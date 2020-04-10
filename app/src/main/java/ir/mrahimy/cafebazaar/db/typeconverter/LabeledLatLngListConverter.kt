@@ -1,10 +1,9 @@
 package ir.mrahimy.cafebazaar.db.typeconverter
 
 import androidx.room.TypeConverter
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import ir.mrahimy.cafebazaar.data.dataclass.LabeledLatLng
-import ir.mrahimy.cafebazaar.data.dataclass.VenueCategory
+import ir.mrahimy.cafebazaar.ktx.serialization.fromJson
+import ir.mrahimy.cafebazaar.ktx.serialization.toJson
 import java.io.Serializable
 
 class LabeledLatLngListConverter : Serializable {
