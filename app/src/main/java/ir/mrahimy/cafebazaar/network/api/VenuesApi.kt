@@ -4,8 +4,8 @@ import ir.mrahimy.cafebazaar.network.reponse.VenueQueryResponse
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
-interface PlacesApi {
+interface VenuesApi {
 
     @GET("venues/explore/")
-    suspend fun getPlaces(@QueryMap params: Map<String, String>): VenueQueryResponse
+    suspend fun query(@QueryMap params: Map<String, String>): VenueQueryResponse
 }
