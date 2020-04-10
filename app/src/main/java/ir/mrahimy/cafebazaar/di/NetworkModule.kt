@@ -38,7 +38,7 @@ val networkModule = module {
     }
 
     factory(FoursquareApiInterceptorQualifier){
-        FoursquareApiInterceptor(/***/)
+        FoursquareApiInterceptor(BaseUrl.FOURSQUARE_VERSION, get())
     }
 
     single<OkHttpClient>(OkHttpQualifier) {
