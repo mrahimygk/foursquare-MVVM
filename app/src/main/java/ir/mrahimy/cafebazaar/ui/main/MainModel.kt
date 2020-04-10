@@ -1,17 +1,18 @@
 package ir.mrahimy.cafebazaar.ui.main
 
 import ir.mrahimy.cafebazaar.base.BaseModel
-import ir.mrahimy.cafebazaar.data.dataclass.*
-import ir.mrahimy.cafebazaar.network.reponse.Photos
-import ir.mrahimy.cafebazaar.network.reponse.VenuePage
+import ir.mrahimy.cafebazaar.data.dataclass.Venue
 import ir.mrahimy.cafebazaar.repository.VenueRepository
-import kotlin.random.Random
 
 class MainModel(
     private val venueRepository: VenueRepository
 ) : BaseModel() {
 
-    suspend fun get() = venueRepository.get()
+    suspend fun getAll() = venueRepository.getAll()
+
+    suspend fun get(venueId: String): Venue {
+        return venueRepository.get(venueId)
+    }
 
     val offlineVenueList = venueRepository.getOffline()
 
