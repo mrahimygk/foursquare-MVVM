@@ -12,6 +12,7 @@ buildscript {
         recyclerViewVersion = '1.1.0'
         retrofitVersion = '2.6.0'
         roomVersion = '2.2.5'
+        timberVersion = '4.7.1'
     }
     repositories {
         google()
