@@ -1,11 +1,17 @@
 package ir.mrahimy.cafebazaar.network.interceptor
 
+import com.google.gson.Gson
+import ir.mrahimy.cafebazaar.ktx.serialization.extractResponse
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.Response
+import okhttp3.ResponseBody
 
 
-class FoursquareApiInterceptor(val version: String = "20200101") : Interceptor {
+class FoursquareApiInterceptor(
+    val version: String,
+    private val gson: Gson
+) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
@@ -23,7 +29,14 @@ class FoursquareApiInterceptor(val version: String = "20200101") : Interceptor {
             )
             .build()
         request = request.newBuilder().url(url).build()
-        return chain.proceed(request)
+        val response = chain.proceed(request)
+        val data = response.body()?.string()?.let { body ->
+            gson.extractResponse(body)
+        } ?: ""
+
+        val contentType = response.body()?.contentType()
+        val newBody = ResponseBody.create(contentType, data)
+        return response.newBuilder().body(newBody).build()
     }
 
 }
