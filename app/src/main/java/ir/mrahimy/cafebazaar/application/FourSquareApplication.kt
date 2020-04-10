@@ -22,7 +22,8 @@ class FourSquareApplication : Application() {
                 modelModule, viewModelModule,
                 serializationModule,
                 databaseModule,
-                networkModule
+                networkModule,
+                repositoryModule
             )
         }
     }
