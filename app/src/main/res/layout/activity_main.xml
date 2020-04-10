@@ -22,13 +22,21 @@
             app:data="@{vm.venueList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <ProgressBar
-            android:layout_width="wrap_content"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_isLoading"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/venueList"
-            app:layout_constraintEnd_toEndOf="@id/venueList"
+            android:contentDescription="@string/app_name"
             app:isVisible="@{vm.isLoading}"
-            app:layout_constraintBottom_toBottomOf="@id/venueList"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/colorPrimary"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
