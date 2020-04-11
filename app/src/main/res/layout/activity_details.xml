@@ -19,22 +19,43 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@{vm.selectedVenue.name}"
-            android:textSize="24sp"
-            android:padding="24dp"
-            android:textColor="@color/white"
             android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="@{vm.selectedVenue.name}"
+            android:textColor="@color/white"
+            android:textSize="24sp"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="16dp"
+            android:text="@{@string/address_placeholder(vm.selectedVenue.fullAddress)}"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="16dp"
+            android:text="@{@string/distance_placeholder(vm.selectedVenue.location.distance)}"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/address" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{@string/address_placeholder(vm.selectedVenue.location.address)}"
-            android:textSize="16sp"
-            android:padding="16dp"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/name" />
+            app:isGone="@{vm.selectedVenue.websiteIsNull}"
+            android:padding="16dp"
+            android:text="@{@string/website_placeholder(vm.selectedVenue.delivery.url)}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
