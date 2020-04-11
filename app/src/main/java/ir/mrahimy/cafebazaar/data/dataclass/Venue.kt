@@ -1,6 +1,7 @@
 package ir.mrahimy.cafebazaar.data.dataclass
 
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -28,5 +29,11 @@ data class Venue(
     val photos: Photos?,
     @Embedded(prefix = "page_")
     @SerializedName("venuePage")
-    val venuePage: VenuePage?
+    val venuePage: VenuePage?,
+    /**
+     * the most basic way of syncing local order with server when no data has been specified
+     * maybe 4sq api orders them by distance ( sqrt(power(lat,2) + power(lon,2) )
+     */
+    @ColumnInfo(name="fetched_order")
+    val fetchedOrder: Int
 )
