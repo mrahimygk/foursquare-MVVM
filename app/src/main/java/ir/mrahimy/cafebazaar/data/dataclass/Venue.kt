@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import ir.mrahimy.cafebazaar.network.reponse.Photos
 import ir.mrahimy.cafebazaar.network.reponse.VenuePage
+import java.lang.StringBuilder
 
 @Entity
 data class Venue(
@@ -34,6 +35,18 @@ data class Venue(
      * the most basic way of syncing local order with server when no data has been specified
      * maybe 4sq api orders them by distance ( sqrt(power(lat,2) + power(lon,2) )
      */
-    @ColumnInfo(name="fetched_order")
+    @ColumnInfo(name = "fetched_order")
     val fetchedOrder: Int
-)
+) {
+    var image: String? = ""
+}
+
+fun Venue.fill(): Venue {
+    delivery?.provider?.icon?.let { address ->
+        image = StringBuilder()
+            .append(address.prefix)
+            .append(address.sizes?.max())
+            .append(address.name).toString()
+    }
+    return this
+}
