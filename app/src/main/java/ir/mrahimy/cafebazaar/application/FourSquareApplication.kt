@@ -3,6 +3,7 @@ package ir.mrahimy.cafebazaar.application
 import android.app.Application
 import ir.mrahimy.cafebazaar.BuildConfig
 import ir.mrahimy.cafebazaar.di.*
+import ir.mrahimy.cafebazaar.network.ConnectionLiveData
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -27,5 +28,6 @@ class FourSquareApplication : Application() {
                 apiModule
             )
         }
+        ConnectionLiveData.init(this)
     }
 }
