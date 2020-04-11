@@ -3,6 +3,7 @@
 buildscript {
     ext {
         coroutineVersion = '1.3.3'
+        dispatcherVersion = '4.6.0'
         fragmentKtxVersion = '1.2.4'
         gradlePluginVersion = '3.6.2'
         koinVersion = '2.0.0-GA'
