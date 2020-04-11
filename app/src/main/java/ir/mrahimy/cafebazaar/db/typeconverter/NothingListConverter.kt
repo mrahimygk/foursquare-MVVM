@@ -1,9 +1,8 @@
 package ir.mrahimy.cafebazaar.db.typeconverter
 
 import androidx.room.TypeConverter
-import java.io.Serializable
 
-class NothingListConverter : Serializable {
+class NothingListConverter : Serializer() {
 
     @TypeConverter
     fun fromList(list: List<Nothing>?): String {
