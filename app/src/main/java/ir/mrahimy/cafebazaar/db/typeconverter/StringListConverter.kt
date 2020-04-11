@@ -13,6 +13,6 @@ class StringListConverter : Serializer() {
     fun fromList(list: List<String>?) = gson.toJson(list, type)
 
     @TypeConverter
-    fun fromDb(json: String?): List<String> = gson.fromJson(json, type)
+    fun fromDb(json: String?): List<String>? = gson.fromJson(json, type)
 
 }

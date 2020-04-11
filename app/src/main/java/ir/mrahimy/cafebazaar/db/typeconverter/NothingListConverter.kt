@@ -9,5 +9,5 @@ class NothingListConverter : Serializer() {
 
 
     @TypeConverter
-    fun fromDb(json: String?): List<Nothing> = emptyList()
+    fun fromDb(json: String?): List<Nothing>? = emptyList()
 }

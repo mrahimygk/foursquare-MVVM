@@ -14,6 +14,6 @@ class LabeledLatLngListConverter : Serializer() {
     fun fromList(list: List<LabeledLatLng>?): String = gson.toJson(list, type)
 
     @TypeConverter
-    fun fromDb(json: String?): List<LabeledLatLng> = gson.fromJson(json, type)
+    fun fromDb(json: String?): List<LabeledLatLng>? = gson.fromJson(json, type)
 
 }

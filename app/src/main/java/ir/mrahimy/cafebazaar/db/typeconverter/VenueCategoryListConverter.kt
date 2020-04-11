@@ -14,6 +14,6 @@ class VenueCategoryListConverter : Serializer() {
     fun fromList(list: List<VenueCategory>?): String = gson.toJson(list, type)
 
     @TypeConverter
-    fun fromDb(json: String?): List<VenueCategory> = gson.fromJson(json, type)
+    fun fromDb(json: String?): List<VenueCategory>? = gson.fromJson(json, type)
 
 }

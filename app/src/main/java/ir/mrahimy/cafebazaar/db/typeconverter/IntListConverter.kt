@@ -18,6 +18,6 @@ class IntListConverter : Serializer() {
     fun fromList(list: List<Int>?): String = gson.toJson(list, type)
 
     @TypeConverter
-    fun fromDb(json: String?): List<Int> = gson.fromJson(json, type)
+    fun fromDb(json: String?): List<Int>? = gson.fromJson(json, type)
 
 }
