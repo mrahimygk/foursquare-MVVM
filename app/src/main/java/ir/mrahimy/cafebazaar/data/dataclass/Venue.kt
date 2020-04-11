@@ -5,7 +5,6 @@ import androidx.room.*
 import com.google.gson.annotations.SerializedName
 import ir.mrahimy.cafebazaar.network.reponse.Photos
 import ir.mrahimy.cafebazaar.network.reponse.VenuePage
-import java.lang.StringBuilder
 
 @Entity
 data class Venue(
@@ -38,7 +37,13 @@ data class Venue(
     @Ignore
     var image: String? = ""
     @Ignore
-    var fullAddress : String? = ""
+    var fullAddress: String? = ""
+    @Ignore
+    var placeCategories: String? = ""
+    @Ignore
+    var categoryIcon: String? = ""
+    @Ignore
+    var websiteIsNull: Boolean = false
 }
 
 fun Venue.fill(): Venue {
@@ -52,5 +57,11 @@ fun Venue.fill(): Venue {
     location?.formattedAddress?.let { address ->
         fullAddress = address.joinToString(" ")
     } ?: location?.address
+
+    placeCategories = categories?.map { it.name }?.joinToString(", ")
+    categoryIcon = categories?.filter { it.primary == true }?.firstOrNull()?.icon?.let { icon ->
+        "${icon.prefix}${icon.suffix}"
+    }
+    websiteIsNull = delivery?.url?.isBlank() == true
     return this
 }
