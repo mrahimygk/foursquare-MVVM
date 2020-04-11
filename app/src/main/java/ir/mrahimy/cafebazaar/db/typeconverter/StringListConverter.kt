@@ -1,16 +1,18 @@
 package ir.mrahimy.cafebazaar.db.typeconverter
 
 import androidx.room.TypeConverter
-import ir.mrahimy.cafebazaar.ktx.serialization.fromJson
-import ir.mrahimy.cafebazaar.ktx.serialization.toJson
-import java.io.Serializable
+import com.google.gson.reflect.TypeToken
 
-class StringListConverter : Serializable {
+class StringListConverter : Serializer() {
+
+    private val type by lazy {
+        object : TypeToken<List<String>?>() {}.type
+    }
 
     @TypeConverter
-    fun fromList(list: List<String>?) = toJson(list)
+    fun fromList(list: List<String>?) = gson.toJson(list, type)
 
     @TypeConverter
-    fun fromDb(json: String?): List<String> = fromJson(json)
+    fun fromDb(json: String?): List<String> = gson.fromJson(json, type)
 
 }

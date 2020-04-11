@@ -5,12 +5,9 @@ import androidx.room.TypeConverter
 class NothingListConverter : Serializer() {
 
     @TypeConverter
-    fun fromList(list: List<Nothing>?): String {
-        return ""
-    }
+    fun fromList(list: List<Nothing>?): String = ""
+
 
     @TypeConverter
-    fun fromDb(json: String?): List<Nothing> {
-        return emptyList()
-    }
+    fun fromDb(json: String?): List<Nothing> = emptyList()
 }

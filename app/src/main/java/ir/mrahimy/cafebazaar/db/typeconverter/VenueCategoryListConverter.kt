@@ -1,16 +1,19 @@
 package ir.mrahimy.cafebazaar.db.typeconverter
 
 import androidx.room.TypeConverter
+import com.google.gson.reflect.TypeToken
 import ir.mrahimy.cafebazaar.data.dataclass.VenueCategory
-import ir.mrahimy.cafebazaar.ktx.serialization.fromJson
-import ir.mrahimy.cafebazaar.ktx.serialization.toJson
-import java.io.Serializable
 
-class VenueCategoryListConverter : Serializable {
+class VenueCategoryListConverter : Serializer() {
 
-    @TypeConverter
-    fun fromList(list: List<VenueCategory>?) = toJson(list)
+    private val type by lazy {
+        object : TypeToken<List<VenueCategory>?>() {}.type
+    }
 
     @TypeConverter
-    fun fromDb(json: String?): List<VenueCategory> = fromJson(json)
+    fun fromList(list: List<VenueCategory>?): String = gson.toJson(list, type)
+
+    @TypeConverter
+    fun fromDb(json: String?): List<VenueCategory> = gson.fromJson(json, type)
+
 }

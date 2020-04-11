@@ -1,7 +1,6 @@
 package ir.mrahimy.cafebazaar.db.typeconverter
 
 import androidx.room.TypeConverter
-import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
@@ -9,18 +8,16 @@ import java.io.Serializable
  * Integers are converted to json as doubles?
  * So I could not use ktx from [Serializable]
  */
-class IntListConverter : Serializable {
+class IntListConverter : Serializer() {
 
-    private var gson = Gson()
-    @TypeConverter
-    fun fromList(list: List<Int>?): String {
-        val type = object : TypeToken<List<Int?>?>() {}.type
-        return gson.toJson(list, type)
+    private val type by lazy {
+        object : TypeToken<List<Int>?>() {}.type
     }
 
     @TypeConverter
-    fun fromDb(json: String?): List<Int> {
-        val type = object : TypeToken<List<Int?>?>() {}.type
-        return gson.fromJson(json, type)
-    }
+    fun fromList(list: List<Int>?): String = gson.toJson(list, type)
+
+    @TypeConverter
+    fun fromDb(json: String?): List<Int> = gson.fromJson(json, type)
+
 }
