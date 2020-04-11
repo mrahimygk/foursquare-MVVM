@@ -88,8 +88,9 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
-    // play services
+    // System
     implementation "com.google.android.gms:play-services-location:$playServicesVersion"
-
+    implementation "org.permissionsdispatcher:permissionsdispatcher:$dispatcherVersion"
+    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:$dispatcherVersion"
 
 }
