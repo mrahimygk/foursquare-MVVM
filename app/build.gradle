@@ -92,5 +92,6 @@ dependencies {
     implementation "com.google.android.gms:play-services-location:$playServicesVersion"
     implementation "org.permissionsdispatcher:permissionsdispatcher:$dispatcherVersion"
     kapt "org.permissionsdispatcher:permissionsdispatcher-processor:$dispatcherVersion"
-
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 }
