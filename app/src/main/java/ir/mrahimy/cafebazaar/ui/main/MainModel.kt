@@ -1,5 +1,7 @@
 package ir.mrahimy.cafebazaar.ui.main
 
+import android.location.Location
+import com.google.android.gms.location.LocationRequest
 import ir.mrahimy.cafebazaar.base.BaseModel
 import ir.mrahimy.cafebazaar.data.dataclass.Venue
 import ir.mrahimy.cafebazaar.repository.VenueRepository
@@ -26,5 +28,15 @@ class MainModel(
             "offset" to offset.toString()
         )
     )
+
+    private val locationRequest: LocationRequest? by lazy {
+        LocationRequest.create()?.apply {
+            fastestInterval = 2000L
+            interval = 1000L
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
+    }
+
+    fun makeLocationRequest(): LocationRequest? = locationRequest
 
 }
