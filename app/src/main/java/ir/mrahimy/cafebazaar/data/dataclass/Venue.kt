@@ -1,10 +1,7 @@
 package ir.mrahimy.cafebazaar.data.dataclass
 
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.google.gson.annotations.SerializedName
 import ir.mrahimy.cafebazaar.network.reponse.Photos
 import ir.mrahimy.cafebazaar.network.reponse.VenuePage
@@ -38,7 +35,10 @@ data class Venue(
     @ColumnInfo(name = "fetched_order")
     val fetchedOrder: Int
 ) {
+    @Ignore
     var image: String? = ""
+    @Ignore
+    var fullAddress : String? = ""
 }
 
 fun Venue.fill(): Venue {
@@ -48,5 +48,9 @@ fun Venue.fill(): Venue {
             .append(address.sizes?.max())
             .append(address.name).toString()
     }
+
+    location?.formattedAddress?.let { address ->
+        fullAddress = address.joinToString(" ")
+    } ?: location?.address
     return this
 }
