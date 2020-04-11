@@ -20,13 +20,16 @@ class MainModel(
 
     suspend fun syncVenueList(
         limit: Int,
-        offset: Int/*TODO: GET raw LOCATION DATA FROM vm <-- activity*/
+        offset: Int,
+        location: Location,
+        shouldClearDb: Boolean
     ) = venueRepository.sync(
         mapOf(
-            "ll" to "40.7243,-74.0018",
+            "ll" to "${location.latitude},${location.longitude}",
             "limit" to limit.toString(),
             "offset" to offset.toString()
-        )
+        ),
+        shouldClearDb
     )
 
     private val locationRequest: LocationRequest? by lazy {
