@@ -7,6 +7,6 @@ import ir.mrahimy.cafebazaar.network.ApiResult
 interface VenueRepository {
     suspend fun getAll(): List<Venue>
     fun getOffline(): LiveData<List<Venue>>
-    suspend fun sync(queryMap: Map<String, String>): ApiResult<Any>
+    suspend fun sync(queryMap: Map<String, String>, shouldClearDb: Boolean): ApiResult<Any>
     suspend fun get(venueId: String): Venue
 }
