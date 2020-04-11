@@ -9,5 +9,5 @@ data class NamedIconAddress(
     @SerializedName("prefix")
     val prefix: String?,
     @SerializedName("sizes")
-    val sizes: List<Int?>?
+    val sizes: List<Int>?
 )
