@@ -2,5 +2,6 @@
     <string name="app_name">Cafebazaar</string>
     <string name="error">Error</string>
     <string name="address_placeholder">Address: %1$s</string>
+    <string name="website_placeholder">Website: %1$s</string>
     <string name="no_last_location">Could not find last known location</string>
 </resources>
