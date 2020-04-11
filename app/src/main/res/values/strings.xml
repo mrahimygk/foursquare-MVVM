@@ -3,5 +3,7 @@
     <string name="error">Error</string>
     <string name="address_placeholder">Address: %1$s</string>
     <string name="website_placeholder">Website: %1$s</string>
+    <string name="distance_placeholder">Distance: %1$d meters</string>
+    <string name="distance_placeholder_mini">%1$d meters</string>
     <string name="no_last_location">Could not find last known location</string>
 </resources>
