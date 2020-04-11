@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ir.mrahimy.cafebazaar.base.BaseViewModel
 import ir.mrahimy.cafebazaar.data.dataclass.Venue
-import ir.mrahimy.cafebazaar.helper.StatelessEvent
-import ir.mrahimy.cafebazaar.network.ApiResult
+import ir.mrahimy.cafebazaar.data.dataclass.fill
 import ir.mrahimy.cafebazaar.ui.main.MainModel
 import kotlinx.coroutines.launch
 
@@ -18,7 +17,7 @@ class DetailsViewModel(private val model: MainModel) : BaseViewModel(model) {
 
     fun selectVenue(venueId: String) {
         viewModelScope.launch {
-            _selectedVenue.postValue(model.get(venueId))
+            _selectedVenue.postValue(model.get(venueId).fill())
         }
     }
 }
