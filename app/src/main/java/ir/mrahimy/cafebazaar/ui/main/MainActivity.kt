@@ -4,7 +4,10 @@ import android.Manifest
 import android.location.Location
 import android.os.Looper
 import androidx.lifecycle.Observer
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
 import ir.mrahimy.cafebazaar.R
 import ir.mrahimy.cafebazaar.base.BaseActivity
@@ -135,5 +138,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         onRequestPermissionsResult(requestCode, grantResults)
+        setupLocationRequestWithPermissionCheck()
     }
 }
