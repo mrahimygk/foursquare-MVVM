@@ -1,8 +1,10 @@
 package ir.mrahimy.cafebazaar.ui.main
 
+import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import ir.mrahimy.cafebazaar.R
 import ir.mrahimy.cafebazaar.base.BaseViewModel
 import ir.mrahimy.cafebazaar.data.dataclass.Venue
 import ir.mrahimy.cafebazaar.helper.Event
@@ -17,18 +19,31 @@ class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    fun syncVenueList(limit: Int, offset: Int) = viewModelScope.launch {
-        _isLoading.postValue(true)
-        when (val result = model.syncVenueList(limit, offset)) {
-            is ApiResult.Success -> {
-                val data = result.data
+    private val perPageLimit = 10
+
+    fun syncVenueList(page: Int, location: Location?, shouldClearDb: Boolean = false) =
+        viewModelScope.launch {
+            if (location == null) {
+                _snackMessage.postValue(Event(R.string.no_last_location))
+                return@launch
             }
-            is ApiResult.Error -> {
-                val error = result.errorCode
+            _isLoading.postValue(true)
+            when (val result =
+                model.syncVenueList(
+                    perPageLimit,
+                    page * perPageLimit,
+                    location,
+                    shouldClearDb
+                )) {
+                is ApiResult.Success -> {
+                    val data = result.data
+                }
+                is ApiResult.Error -> {
+                    val error = result.errorCode
+                }
             }
+            _isLoading.postValue(false)
         }
-        _isLoading.postValue(false)
-    }
 
     private val _onStartDetailsActivity = MutableLiveData<Event<String>>()
     val onStartDetailsActivity: LiveData<Event<String>>
@@ -37,4 +52,6 @@ class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
     fun selectVenue(item: Venue) {
         _onStartDetailsActivity.postValue(Event(item.id))
     }
+
+    fun getLocationRequest() = model.makeLocationRequest()
 }
