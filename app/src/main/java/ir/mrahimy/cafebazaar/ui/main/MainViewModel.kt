@@ -3,17 +3,23 @@ package ir.mrahimy.cafebazaar.ui.main
 import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import ir.mrahimy.cafebazaar.R
 import ir.mrahimy.cafebazaar.base.BaseViewModel
 import ir.mrahimy.cafebazaar.data.dataclass.Venue
+import ir.mrahimy.cafebazaar.data.dataclass.fill
 import ir.mrahimy.cafebazaar.helper.Event
 import ir.mrahimy.cafebazaar.network.ApiResult
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val model: MainModel) : BaseViewModel(model) {
 
-    val venueList = model.offlineVenueList
+    val venueList = model.offlineVenueList.map {
+        it.map { venue ->
+            venue.fill()
+        }
+    }
 
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean>
